@@ -8,6 +8,12 @@ rules:
   # this behavior.
   comments-indentation: disable
 
+  indentation:
+    # Ensure that block sequences inside of a mapping are indented
+    indent-sequences: true
+    # Enforce a specific number of spaces
+    spaces: 2
+
   # yamllint does not allow inline mappings that exceed the line length by
   # default. There are many scenarios where the inline mapping may be a key,
   # hash, or other long value that would exceed the line length but cannot
