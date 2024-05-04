@@ -155,6 +155,22 @@ repos:
     rev: v24.2.0
     hooks:
       - id: ansible-lint
+        additional_dependencies:
+          # TODO: Remove this pin when that becomes possible.  See
+          # cisagov/skeleton-generic#181 for more details.
+          #
+          # Since we pin ansible-core in
+          # cisagov/skeleton-ansible-role, we should pin it here too
+          # to ensure that ansible-lint is applied consistently across
+          # all our repos.  See cisagov/skeleton-ansible-role#178 for
+          # more information as to why this pinning is necessary.
+          #
+          # See also cisagov/skeleton-packer#312 and
+          # cisagov/skeleton-ansible-role#179.  Note from these PRs
+          # that any changes made to this dependency must also be made
+          # in requirements.txt in cisagov/skeleton-packer and
+          # requirements-test.txt in cisagov/skeleton-ansible-role.
+          - ansible-core<2.16.3
       # files: molecule/default/playbook.yml
 
   # Terraform hooks
