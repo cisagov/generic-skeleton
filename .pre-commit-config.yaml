@@ -156,6 +156,14 @@ repos:
     hooks:
       - id: ansible-lint
         additional_dependencies:
+          # On its own ansible-lint does not pull in ansible, only
+          # ansible-core.  Therefore, if an Ansible module lives in
+          # ansible instead of ansible-core, the linter will complain
+          # that the module is unknown.  In these cases it is
+          # necessary to add the ansible package itself as an
+          # additional dependency, with the same pinning as is done in
+          # requirements-test.txt of cisagov/skeleton-ansible-role.
+          # - ansible
           # TODO: Remove this pin when that becomes possible.  See
           # cisagov/skeleton-generic#181 for more details.
           #
