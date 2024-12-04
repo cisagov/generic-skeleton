@@ -49,7 +49,3 @@ rules:
     forbid-explicit-octal: true
     # Do not allow implicit octal values (those beginning with a leading 0).
     forbid-implicit-octal: true
-
-  # yamllint doesn't like when we use yes and no for true and false,
-  # but that's pretty standard in Ansible.
-  truthy: disable
