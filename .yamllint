@@ -49,3 +49,14 @@ rules:
     forbid-explicit-octal: true
     # Do not allow implicit octal values (those beginning with a leading 0).
     forbid-implicit-octal: true
+
+  quoted-strings:
+    # Allow disallowed quotes (single quotes) for strings that contain allowed quotes
+    # (double quotes).
+    allow-quoted-quotes: true
+    # Apply these rules to keys in mappings as well
+    check-keys: true
+    # We prefer double quotes for strings when they are needed
+    quote-type: double
+    # Only require quotes when they are necessary for proper processing
+    required: only-when-needed
