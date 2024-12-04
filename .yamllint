@@ -5,10 +5,17 @@ rules:
   braces:
     # Do not allow non-empty flow mappings
     forbid: non-empty
+    # Allow up to one space inside braces. This is required for Ansible compatibility.
+    max-spaces-inside: 1
 
   brackets:
     # Do not allow non-empty flow sequences
     forbid: non-empty
+
+  comments:
+    # Ensure that inline comments have at least one space before the preceding content.
+    # This is required for Ansible compatibility.
+    min-spaces-from-content: 1
 
   # yamllint does not like it when you comment out different parts of
   # dictionaries in a list. You can see
@@ -31,6 +38,17 @@ rules:
     allow-non-breakable-inline-mappings: true
     # Allows a 10% overage from the default limit of 80
     max: 88
+
+  # Using anything other than strings to express octal values can lead to unexpected
+  # and potentially unsafe behavior. Ansible strongly recommends against such practices
+  # and these rules are needed for Ansible compatibility. Please see the following for
+  # more information:
+  # https://ansible.readthedocs.io/projects/lint/rules/risky-octal/
+  octal-values:
+    # Do not allow explicit octal values (those beginning with a leading 0o).
+    forbid-explicit-octal: true
+    # Do not allow implicit octal values (those beginning with a leading 0).
+    forbid-implicit-octal: true
 
   # yamllint doesn't like when we use yes and no for true and false,
   # but that's pretty standard in Ansible.
